@@ -10,7 +10,7 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $service =  Service::query()->paginate(10);
+        $service =  Service::all();
 
         return Response::success($service)->mapInto(ServiceResource::class)->withPagination()->send();
     }

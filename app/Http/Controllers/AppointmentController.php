@@ -12,7 +12,7 @@ class AppointmentController extends Controller
 {
     public function index()
     {
-        $appointment =  Appointment::query()->paginate(10);
+        $appointment =  Appointment::all();
 
         return Response::success($appointment)->mapInto(AppointmentResource::class)->withPagination()->send();
     }
@@ -93,7 +93,7 @@ class AppointmentController extends Controller
          *  1 => الحجز بدأ
          *  2 => الحجز انتهي
          */
-        
+
         $rules = [
             'id' => 'required',
             'status' => 'required|in:0,1,2',
