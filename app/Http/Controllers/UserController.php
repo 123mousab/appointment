@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $user =  User::query()->paginate(10);
+        $user =  User::all();
 
         return Response::success($user)->mapInto(UserResource::class)->withPagination()->send();
     }
