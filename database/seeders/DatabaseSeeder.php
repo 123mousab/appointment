@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             ServicesTableSeeder::class,
             UserTableSeeder::class,
-            AppointmentsTableSeeder::class,
+//            AppointmentsTableSeeder::class,
         ]);
     }
 }
