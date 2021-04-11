@@ -5,6 +5,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\HolidaysController;
+use App\Http\Controllers\BookingUserController;
+
 
 
 Route::prefix('admin')->middleware('auth:admin')->group(function (){
@@ -38,4 +41,19 @@ Route::prefix('admin')->middleware('auth:admin')->group(function (){
         Route::post('/{id}/update', [AppointmentController::class, 'update']);
         Route::delete('/{id}', [AppointmentController::class, 'destroy']);
     });
+
+    Route::prefix('holiday')->group(function (){
+        Route::post('/holiday_store_days', [HolidaysController::class, 'holidayStoreDays']);
+        Route::get('/holiday_calendar/{year}', [HolidaysController::class, 'holidayCalendar']);
+        Route::get('/get_calendar_month', [HolidaysController::class, 'getCalendarMonth']);
+        Route::get('/', [HolidaysController::class, 'index']);
+        Route::post('/', [HolidaysController::class, 'store']);
+        Route::get('/{id}', [HolidaysController::class, 'find']);
+        Route::put('/update_status', [HolidaysController::class, 'updateStatus']);
+        Route::post('/{id}/update', [HolidaysController::class, 'update']);
+        Route::delete('/{id}', [HolidaysController::class, 'destroy']);
+    });
+
+    Route::post('/add_appointment', [BookingUserController::class, 'addAppointment'])->withoutMiddleware('auth:admin');
 });
+

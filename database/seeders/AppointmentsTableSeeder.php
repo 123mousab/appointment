@@ -19,5 +19,9 @@ class AppointmentsTableSeeder extends Seeder
         $appointment = Appointment::find(1);
 
         $appointment->services()->sync([1,2,3]);
+
+        $appointment2 = Appointment::find(2);
+
+        $appointment2->services()->sync([4,5]);
     }
 }

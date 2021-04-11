@@ -24,7 +24,10 @@ class CreateAppointmentsTable extends Migration
 
             $table->longText('comments')->nullable();
 
-            $table->boolean('status')->default(0);
+            $table->integer('person_number')->nullable();
+            $table->integer('transaction_number')->nullable();
+
+            $table->tinyInteger('status')->default(0);
 
             $table->unsignedBigInteger('user_id');
 

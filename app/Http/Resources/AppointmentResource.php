@@ -19,9 +19,11 @@ class AppointmentResource extends JsonResource
             'start_time' => $this->start_time->format('Y-m-d H:i'),
             'finish_time' => $this->finish_time->format('Y-m-d H:i'),
             'user_id' => $this->user->id,
+            'person_number' => $this->person_number,
+            'transaction_number' => $this->transaction_number,
             'user' => $this->getUser(),
             'comments' => $this->comments,
-            'status' => $this->status,
+            'status' => $this->status_text,
             'services' => collect($this->services)->map(function ($service){
                 return [
                     'id' => $service['id'],

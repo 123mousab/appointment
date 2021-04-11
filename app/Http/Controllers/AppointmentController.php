@@ -24,6 +24,14 @@ class AppointmentController extends Controller
                 'required',
                 'integer',
             ],
+            'person_number'   => [
+                'nullable',
+                'integer',
+            ],
+            'transaction_number'   => [
+                'nullable',
+                'integer',
+            ],
             'start_time'  => [
                 'required',
                 'date_format:' . config('format.date_format') . ' ' . config('format.time_format'),
@@ -61,6 +69,14 @@ class AppointmentController extends Controller
         $request->validate([
             'user_id'   => [
                 'required',
+                'integer',
+            ],
+            'person_number'   => [
+                'nullable',
+                'integer',
+            ],
+            'transaction_number'   => [
+                'nullable',
                 'integer',
             ],
             'start_time'  => [
