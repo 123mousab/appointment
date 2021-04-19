@@ -113,7 +113,7 @@ class AppointmentController extends Controller
     public function updateStatus(Request $request)
     {
         /**
-         *  0 => الحجز لم يبدأ
+         *  0 => الحجز قادمأ
          *  1 => الحجز بدأ
          *  2 => الحجز انتهي
          */

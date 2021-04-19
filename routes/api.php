@@ -18,7 +18,7 @@ Route::prefix('admin')->middleware('auth:admin')->group(function (){
     });
 
     Route::prefix('service')->group(function (){
-        Route::get('/', [ServiceController::class, 'index']);
+        Route::get('/', [ServiceController::class, 'index'])->withoutMiddleware('auth:admin');
         Route::post('/', [ServiceController::class, 'store']);
         Route::get('/{id}', [ServiceController::class, 'find']);
         Route::post('/{id}/update', [ServiceController::class, 'update']);
