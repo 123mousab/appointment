@@ -21,11 +21,9 @@ class BookingUserController
             'email'   => [
                 'required',
                 'email',
-                'unique:users'
             ],
             'mobile'   => [
                 'nullable',
-                'unique:users'
             ],
             'person_number'   => [
                 'nullable',

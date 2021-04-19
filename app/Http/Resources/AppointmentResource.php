@@ -15,15 +15,15 @@ class AppointmentResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'start_time' => $this->start_time->format('Y-m-d H:i'),
-            'finish_time' => $this->finish_time->format('Y-m-d H:i'),
-            'user_id' => $this->user->id,
-            'person_number' => $this->person_number,
-            'transaction_number' => $this->transaction_number,
-            'user' => $this->getUser(),
-            'comments' => $this->comments,
-            'status' => $this->status_text,
+            'id' => @$this->id,
+            'start_time' => @$this->start_time->format('Y-m-d H:i'),
+            'finish_time' => @$this->finish_time->format('Y-m-d H:i'),
+            'user_id' => @$this->user->id,
+            'person_number' => @$this->person_number,
+            'transaction_number' => @$this->transaction_number,
+            'user' => @$this->getUser(),
+            'comments' => @$this->comments,
+            'status' => @$this->status_text,
             'services' => collect($this->services)->map(function ($service){
                 return [
                     'id' => $service['id'],

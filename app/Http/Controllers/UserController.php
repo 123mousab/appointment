@@ -20,8 +20,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'mobile' => 'nullable',
-            'password' => 'required',
+            'mobile' => 'nullable'
         ]);
 
         User::query()->create($request->all());
@@ -43,8 +42,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'mobile' => 'nullable',
-            'password' => 'required',
+            'mobile' => 'nullable'
         ]);
 
         $user->update($request->all());

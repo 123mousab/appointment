@@ -48,9 +48,17 @@ class AppointmentController extends Controller
             ],
         ]);
 
-        $appointment = Appointment::query()->create($request->all());
+//        dd($request->all());
+//        $appointment = Appointment::query()->create($request->all());
+        $appointment = Appointment::query()->create([
+            'user_id' => @$request->user_id,
+            'person_number' => @$request->person_number,
+            'transaction_number' => @$request->transaction_number,
+            'start_time' => @$request->start_time,
+            'finish_time' => @$request->finish_time,
+        ]);
 
-        $appointment->services()->sync($request->input('services', []));
+        $appointment->services()->sync($request->services);
 
         return Response::success(new AppointmentResource($appointment))->withMessage('تم العملية بنجاح')->send();
     }
@@ -130,9 +138,7 @@ class AppointmentController extends Controller
 
     public function destroy($id)
     {
-        $appointment = Appointment::query()->find($id);
-
-        $appointment->services()->delete();
+        Appointment::query()->find($id)->delete();
         DB::table('appointment_service')->where('appointment_id', $id)->delete();
 
         return Response::success()->withMessage('تم العملية بنجاح')->send();
